@@ -21,7 +21,7 @@ class EventsFactory extends Factory
             'Paris Saint-Germain', 'Chelsea', 'Manchester City', 'Atletico Madrid', 'Borussia Dortmund',
             'Inter Milan', 'AC Milan', 'Tottenham Hotspur', 'Ajax', 'Porto', 'Benfica', 'Sevilla',
             'Lazio', 'RB Leipzig', 'Zenit', 'Shakhtar Donetsk', 'Galatasaray', 'Olympiacos', 'Celtic',
-            'Rangers', 'Dynamo Kiev', 'Club Brugge', 'Red Star Belgrade', 'Anderlecht', 'PSV Eindhoven',
+            'Rangers', 'Dynamo Kiev', 'Club Brugge', 'Partizan', 'Anderlecht', 'PSV Eindhoven',
             'Fenerbahçe'
         ];
         $stadiums = [
@@ -30,7 +30,7 @@ class EventsFactory extends Factory
             'Signal Iduna Park', 'San Siro', 'Tottenham Hotspur Stadium', 'Amsterdam Arena',
             'Estadio do Dragao', 'Estadio da Luz', 'Ramon Sanchez-Pizjuan', 'Stadio Olimpico',
             'Red Bull Arena', 'Gazprom Arena', 'Donbass Arena', 'Türk Telekom Stadium', 'Karaiskakis Stadium',
-            'Celtic Park', 'Ibrox Stadium', 'NSC Olimpiyskiy', 'Jan Breydel Stadium', 'Rajko Mitic Stadium',
+            'Celtic Park', 'Ibrox Stadium', 'NSC Olimpiyskiy', 'Jan Breydel Stadium', 'Stadion JNA',
             'Constant Vanden Stock Stadium', 'Philips Stadion', 'Ülker Stadium'
         ];
         $team1 = $this->faker->randomElement($teams);

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Events;
+use App\Models\Tickets;
 use Illuminate\Support\Facades\DB;
 
 
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
 
          User::factory()->count(10)->create();
          Events::factory()->count(10)->create();
+         Tickets::factory()->count(10)->create();
 
 
         
