@@ -19,6 +19,15 @@ class TicketController extends Controller
         //
     }
 
+    public function userTickets($user){
+        $orders = Tickets::with('tickets')->where('user_id', $user)->get();
+
+     
+        $products = $tickets->map(function ($ticket) {
+            return $ticket->event;
+
+        });
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -116,4 +125,5 @@ class TicketController extends Controller
         $ticket->delete();
         return response()->json(['message' => 'Karta je uspešno obrisana'], 200);
     }
+
 }

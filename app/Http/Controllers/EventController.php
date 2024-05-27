@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Events;
 use Illuminate\Http\Request;
+use App\Http\Resources\EventsCollection;
 
 class EventController extends Controller
 {
@@ -37,16 +38,16 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'date' => 'required|date',
-            'time' => 'required|date_format:H:i:s'
-        ]);
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'stadium' => 'required|string|max:255',
+        //     'date' => 'required|date',
+        //     'time' => 'required|date_format:H:i:s'
+        // ]);
 
-            $event = new Event();
+            $event = new Events();
             $event->name = $request->name;
-            $event->location = $request->location;
+            $event->stadium = $request->stadium;
             $event->date = $request->date;
             $event->time = $request->time;
             $event->save();
@@ -63,11 +64,11 @@ class EventController extends Controller
     public function show(Events $events)
     {
         
-        $event = Event::find($id);
+        $event = Events::find($id);
         if (is_null($event)) {
             return response()->json(['message' => 'Događaj nije pronađen'], 404);
         }
-        return response()->json($event);
+        return new EventsResource($event);
     }
 
     /**
@@ -92,7 +93,7 @@ class EventController extends Controller
     {
          $validatedData = $request->validate([
             'name' => 'string|max:255',
-            'location' => 'string|max:255',
+            'stadium' => 'string|max:255',
             'date' => 'date',
             'time' => 'date_format:H:i'
         ]);

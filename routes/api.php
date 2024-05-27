@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +35,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/profile', function (Request $request) {
         return auth()->user();
     });
-    Route::resource('tickets', TicketController::class)
-        ->only(['store', 'update', 'destroy']);
-    Route::post('/logout', [AuthController::class, 'logout']);
-});
-Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
-    Route::resource('events', EventController::class)->only(['store', 'update', 'destroy']);
     Route::resource('tickets', TicketController::class)->only(['store', 'update', 'destroy']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
+Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
+    Route::resource('tickets', TicketController::class)->only(['store', 'update', 'destroy']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+Route::get('/user/{id}/tickets', [TicketController::class, 'userTickets']);
+Route::resource('events', EventController::class)->only(['store', 'update', 'destroy']);
