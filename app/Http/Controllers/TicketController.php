@@ -57,13 +57,13 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $request->validate([
-        //     'user_id' => 'nullable|exists:users,id',
-        //     'price' => 'required|numeric|min:0',
-        //     'seat_number' => 'required|string|max:255',
-        //     'seat_row' => 'nullable|string|max:255'
-        // ]);
+        
+        $request->validate([
+            'user_id' => 'nullable|exists:users,id',
+            'price' => 'required|numeric|min:0',
+            'seat_number' => 'required|string|max:255',
+            'seat_row' => 'nullable|string|max:255'
+        ]);
 
         $ticket = new Tickets();
         $ticket->user_id = $request->user_id;
