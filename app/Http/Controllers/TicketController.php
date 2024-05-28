@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tickets;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Resources\TicketsCollection;
+use App\Http\Resources\TicketsResource;
+
 
 class TicketController extends Controller
 {
@@ -14,20 +18,27 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::all();
-        return response()->json($tickets);
+        $tickets = Tickets::all();
+        return new TicketsCollection($tickets);
         //
     }
 
-    public function userTickets($user){
-        $orders = Tickets::with('tickets')->where('user_id', $user)->get();
+    public function userTickets($user_id){
+            // $tickets = Tickets::with('tickets')->where('user_id', $user)->get();
 
-     
-        $products = $tickets->map(function ($ticket) {
-            return $ticket->event;
+        
+            // $events = $tickets->map(function ($ticket) {
+            //     return $ticket->event;
 
-        });
-}
+            // });
+            $tickets = Tickets::with('event')->where('user_id', $user_id)->get();
+
+            $events = $tickets->map(function ($ticket) {
+                return $ticket->event;
+            });
+        
+            return $events;
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -47,14 +58,14 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'user_id' => 'nullable|exists:users,id',
-            'price' => 'required|numeric|min:0',
-            'seat_number' => 'required|string|max:255',
-            'seat_row' => 'nullable|string|max:255'
-        ]);
+        // $request->validate([
+        //     'user_id' => 'nullable|exists:users,id',
+        //     'price' => 'required|numeric|min:0',
+        //     'seat_number' => 'required|string|max:255',
+        //     'seat_row' => 'nullable|string|max:255'
+        // ]);
 
-        $ticket = new Ticket();
+        $ticket = new Tickets();
         $ticket->user_id = $request->user_id;
         $ticket->price = $request->price;
         $ticket->seat_number = $request->seat_number;
@@ -71,10 +82,10 @@ class TicketController extends Controller
      * @param  \App\Models\Tickets  $tickets
      * @return \Illuminate\Http\Response
      */
-    public function show(Tickets $tickets)
+    public function show($tickets_id)
     {
         //
-        $ticket = Ticket::find($id);
+        $ticket = Tickets::find($tickets_id);
         if (!$ticket) {
             return response()->json(['message' => 'Karta nije pronađena'], 404);
         }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Events;
 use Illuminate\Http\Request;
 use App\Http\Resources\EventsCollection;
+use App\Http\Resources\EventsResource;
 
 class EventController extends Controller
 {
@@ -61,10 +62,10 @@ class EventController extends Controller
      * @param  \App\Models\Events  $events
      * @return \Illuminate\Http\Response
      */
-    public function show(Events $events)
+    public function show($event_id)
     {
         
-        $event = Events::find($id);
+        $event = Events::find($event_id);
         if (is_null($event)) {
             return response()->json(['message' => 'Događaj nije pronađen'], 404);
         }
