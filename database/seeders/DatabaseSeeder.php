@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-         User::factory()->count(10)->create();
-         Events::factory()->count(10)->create();
+      //   User::factory()->count(10)->create();
+      //   Events::factory()->count(10)->create();
          Tickets::factory()->count(10)->create();
 
 

@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
     Route::resource('tickets', TicketController::class)->only(['store', 'update', 'destroy']);
-    Route::post('/logout', [AuthController::class, 'logout']);
+   
 });
 
 Route::get('/user/{id}/tickets', [TicketController::class, 'userTickets']);

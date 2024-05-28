@@ -37,7 +37,7 @@ class TicketController extends Controller
                 return $ticket->event;
             });
         
-            return $events;
+            return $tickets;
     }
     /**
      * Show the form for creating a new resource.

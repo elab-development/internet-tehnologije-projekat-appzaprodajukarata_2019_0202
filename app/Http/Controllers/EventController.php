@@ -90,17 +90,20 @@ class EventController extends Controller
      * @param  \App\Models\Events  $events
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Events $events)
+    public function update(Request $request, Events $event)
     {
          $validatedData = $request->validate([
             'name' => 'string|max:255',
             'stadium' => 'string|max:255',
             'date' => 'date',
-            'time' => 'date_format:H:i'
+            'time' => 'date_format:H:i:s'
         ]);
+        if (!$validatedData) {
+            abort(400, 'Uneti podaci nisu validni.');
+        }
 
         $event->update($validatedData);
-        return response()->json($event);
+        return response()->json(['Event is updated successfully.', new EventsResource($event)]);
         //
     }
 
@@ -110,11 +113,11 @@ class EventController extends Controller
      * @param  \App\Models\Events  $events
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Events $events)
+    public function destroy(Events $event)
     {
         $event->delete();
 
-        return response()->json('Product was deleted');
+        return response()->json('Event je izbrisan!');
         //
     }
 }
