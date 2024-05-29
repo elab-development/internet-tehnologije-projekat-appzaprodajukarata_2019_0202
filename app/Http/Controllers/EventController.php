@@ -46,6 +46,10 @@ class EventController extends Controller
             'time' => 'required|date_format:H:i:s'
         ]);
 
+        if (!$validatedData) {
+            abort(400, 'Uneti podaci nisu validni.');
+        }
+
             $event = new Events();
             $event->name = $request->name;
             $event->stadium = $request->stadium;
