@@ -33,9 +33,9 @@ class TicketController extends Controller
             // });
             $tickets = Tickets::with('event')->where('user_id', $user_id)->get();
 
-            $events = $tickets->map(function ($ticket) {
-                return $ticket->event;
-            });
+            // $events = $tickets->map(function ($ticket) {
+            //     return $ticket->event;
+            // });
         
             return $tickets;
     }

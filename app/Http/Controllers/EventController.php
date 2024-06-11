@@ -107,7 +107,7 @@ class EventController extends Controller
         }
 
         $event->update($validatedData);
-        return response()->json(['Event is updated successfully.', new EventsResource($event)]);
+        return response()->json(['Event je uspesno izmenjen!', new EventsResource($event)]);
         //
     }
 
