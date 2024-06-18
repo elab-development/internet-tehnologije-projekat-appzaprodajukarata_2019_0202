@@ -1,0 +1,62 @@
+/* CSS stil za karticu događaja */
+.card {
+    width: 300px; /* Povećana širina kartice */
+    height: 350px;
+    border-radius: 10px;
+    border-color: #000000;
+    border-style: double;
+    overflow: hidden;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3); /* Dodavanje veće senke */
+    margin: 20px;
+    background-color: #ffffff; /* Boja pozadine kartice */
+    font-family: 'Arial', sans-serif; /* Promjena fonta */
+    text-align: center; /* Centriranje sadržaja */
+    border: 1px solid #ddd; /* Dodavanje ivice */
+}
+
+.card img {
+    width: 100%;
+    height: auto; /* Automatska visina da bi zadržala proporcije */
+}
+
+.card h1 {
+    font-size: 1.4em; /* Povećana veličina fonta */
+    color: #333333; /* Boja teksta */
+    margin: 10px 0 5px;
+}
+
+.card .description {
+    font-size: 1.1em; /* Povećana veličina fonta */
+    color: #0056b3; /* Boja teksta */
+    margin: 0 20px 10px;
+    font-weight: bold; /* Bold tekst za naziv mesta */
+}
+
+.card .date {
+    font-size: 1em; /* Povećana veličina fonta */
+    color: #666666; /* Boja teksta */
+    margin: 20px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .date .icon {
+    margin-right: 150px;
+    margin-bottom: 5px;
+}
+
+.card button {
+    background-color: #180660; /* Boja pozadine dugmeta */
+    color: #ffffff; /* Boja teksta na dugmetu */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+}
+
+.card button:hover {
+    background-color: #45a049; /* Promjena boje na hover */
+}
