@@ -1,0 +1,84 @@
+.ticket-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-content {
+    display: flex;
+    align-items: center;
+}
+
+.ticket-image {
+    width: 300px; /* Prilagodite veličinu slike prema potrebama */
+    height: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-form {
+    flex: 1; /* Da zauzme preostali prostor */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-form h2 {
+    font-size: 1.5em;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+.ticket-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.ticket-form input[type="text"],
+.ticket-form input[type="number"],
+.ticket-form input[type="date"],
+.ticket-form select {
+    width: calc(100% - 20px); /* Širina 100% sa oduzimanjem padding-a */
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.ticket-form button[type="submit"] {
+    background-color: #180660;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+}
+
+.ticket-form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.event-details {
+    width: 300px; /* Fiksna širina za detalje događaja */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

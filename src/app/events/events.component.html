@@ -1,17 +1,33 @@
-<div class="card"> 
-    <img 
-    src="../../assets/euro.jpg" 
-    alt="Event" 
-    width="70%" 
-    height="80%" 
-    class="image" 
-    /> 
-    <h1>Naziv dogadjaja</h1>  
-    <p class="description">opis</p> 
-    <p class="date">
-        <i class="fas fa-calendar-alt"></i> 17.06.2024. 20:00h
-    </p>
-    <p> 
-        <button class="overlay-button">Kupi ulaznicu</button> 
-    </p> 
+<div class="homepage">
+    <div class="card">
+        <img src="../../assets/euro.jpg" alt="Event" width="70%" height="80%" class="image" />
+        <h1>Nemačka Škotska</h1>
+        <p class="description">Otvaranje evropskog prvenstva u Nemačkoj 2024.</p>
+        <p class="date">
+            <i class="fas fa-calendar-alt"></i> 14.06.2024. 21:00h
+        </p>
+        <button class="buy-ticket-button" (click)="navigateToTicketComponent()">Kupi ulaznicu</button>
+
+    </div>
+    <div class="card">
+        <img src="../../assets/euro.jpg" alt="Event 2" width="70%" height="80%" class="image" />
+        <h1>Srbija Englesa</h1>
+        <p class="description">Prvi susret naše reprezentacije na evropskom prvenstvu</p>
+        <p class="date">
+            <i class="fas fa-calendar-alt"></i> 16.06.2024. 21:00h
+        </p>
+        <!-- events.component.html -->
+        <button class="buy-ticket-button" (click)="navigateToTicketComponent()">Kupi ulaznicu</button>
+    </div>
+
+    <!-- Treći događaj -->
+    <div class="card">
+        <img src="../../assets/euro.jpg" alt="Event 3" width="70%" height="80%" class="image" />
+        <h1>Francuska Austrija</h1>
+        <p class="description">Derbi prvog kola evropskog prvenstva</p>
+        <p class="date">
+            <i class="fas fa-calendar-alt"></i> 17.06.2024. 21:00h
+        </p>
+        <button class="buy-ticket-button" (click)="navigateToTicketComponent()">Kupi ulaznicu</button>
+    </div>
 </div>

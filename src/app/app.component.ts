@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { LoginComponent } from './login/login.component';
+import { Router } from '@angular/router';
+import { EventsComponent } from './events/events.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TicketSport';
+  constructor(private router: Router) {}
+
+  navigateToLogin() {
+    this.router.navigateByUrl('/login'); // Promenite '/login' ako je ruta za login drugačija
+  }
 }

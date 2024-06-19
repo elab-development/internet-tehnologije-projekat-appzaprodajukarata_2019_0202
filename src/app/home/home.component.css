@@ -5,14 +5,17 @@ html, body {
     overflow: hidden; /* Sprečava skrolovanje */
 }
 
-.home {
-    position: fixed; /* Postavlja element kao fiksirani */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Postavlja širinu na širinu viewport-a */
-    height: 100vh; /* Postavlja visinu na visinu viewport-a */
-   /* background-image: url('/assets/pro.jpg');*/
-    background-size: cover; /* Osigurava da slika pokriva ceo kontejner */
-    background-position: center; /* Centriranje slike */
-    background-repeat: no-repeat; /* Sprečava ponavljanje slike */
+/* home.component.css */
+
+.homepage {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-align: center;
+    font-size: 2em;
 }

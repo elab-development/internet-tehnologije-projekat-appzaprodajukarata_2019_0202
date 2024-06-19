@@ -1,25 +1,46 @@
 /* header.component.css */
+
 .navbar {
-    background-color: #333;
-    overflow: hidden;
-  }
-  
-  .navbar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  .navbar a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .navbar a.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
+  background-color: #333;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between; /* Raspored elementa po horizontali */
+  align-items: center; /* Centriranje vertikalno */
+  padding: 10px 20px; /* Unutrašnji padding */
+}
+
+.left-section {
+  display: flex;
+}
+
+.left-section a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.left-section a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.login-button {
+  background-color: #180660;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1em;
+}
+
+.login-button:hover {
+  background-color: #45a049;
+}

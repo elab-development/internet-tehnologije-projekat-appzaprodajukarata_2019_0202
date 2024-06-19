@@ -1,7 +1,13 @@
 /* CSS stil za karticu događaja */
+.homepage {
+    display: flex;
+    flex-wrap: wrap; /* Omogućava prelazak na novi red kada nema dovoljno prostora */
+    gap: 20px; /* Prostor između kartica */
+    justify-content: center; /* Centriranje kartica po horizontali */
+}
 .card {
     width: 300px; /* Povećana širina kartice */
-    height: 350px;
+    height: 370px;
     border-radius: 10px;
     border-color: #000000;
     border-style: double;
