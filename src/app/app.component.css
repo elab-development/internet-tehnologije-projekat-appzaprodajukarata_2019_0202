@@ -22,6 +22,26 @@
   background-color: #45a049;
 }
 
+.app-container {
+  width: 100%;
+  height: 100%;
+}
 
-  
+.background-img {
+  position: absolute; /* Pozicionira element u odnosu na najbližeg relativnog roditelja */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Sakriva eventualne prekoračenja */
+  z-index: -1; /* Osigurava da slika bude u pozadini */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+}
   
