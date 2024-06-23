@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./ticket.component.css']
 })
 export class TicketComponent {
-  ticketForm: FormGroup; // Deklaracija bez inicijalizacije
+  ticketForm: FormGroup;
+  brojKupljenihKarata: number = 0;
 
   selectedRow: string = '';
   selectedSeat: number = 0;
@@ -18,13 +19,16 @@ export class TicketComponent {
 
   rowOptions: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
   seatOptions: number[] = Array.from({ length: 20 }, (_, i) => i + 1);
+  purchasedTickets: { row: string, seat: number }[] = [];
+  
+
+  // Proveri da li je odabrana karta već kupljena
 
   constructor(private fb: FormBuilder) {
-    // Inicijalizacija ticketForm u konstruktoru
     this.ticketForm = this.fb.group({
       selectedRow: ['', Validators.required],
-      selectedSeat: ['', [Validators.required, Validators.min(1), Validators.max(20)]],
-      cardNumber: ['', Validators.required],
+      selectedSeat: ['', Validators.required],
+      cardNumber: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
       cardHolderName: ['', Validators.required],
       expiryDate: ['', Validators.required],
       cvc: ['', Validators.required]
@@ -33,12 +37,26 @@ export class TicketComponent {
 
   purchaseTicket() {
     if (this.ticketForm.valid) {
-      console.log('Kupljena karta:', this.ticketForm.value);
-      // Dodatna logika za slanje podataka na server ili dalju obradu
+      const selectedTicket = { row: this.selectedRow, seat: this.selectedSeat };
+
+      // Proveri da li je odabrana karta već kupljena
+       const alreadyPurchased = this.purchasedTickets.some(ticket =>
+        ticket.row === selectedTicket.row && ticket.seat === selectedTicket.seat
+      );
+    
+
+      if (alreadyPurchased) {
+        alert('Već ste kupili ovu kartu.');
+      } else {
+        // Dodaj odabranu kartu u niz kupljenih karata
+        this.purchasedTickets.push(selectedTicket);
+        this.brojKupljenihKarata++;
+        // Resetuj formu nakon uspešne kupovine
+        this.ticketForm.reset();
+      }
     } else {
-      console.error('Forma nije validna. Molimo proverite unos.');
+      // Ukoliko forma nije validna, možete dodati dodatne provere ili poruke korisniku
+      alert('Molimo vas da popunite ispravno sva polja.');
     }
   }
 }
-
-

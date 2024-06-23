@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Event } from '../models/event';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,9 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  
   constructor(private router: Router) {}
-  backgroundImageUrl = 'assets/pozadina.jpg';
+  backgroundImageUrl = 'assets/pozadina.png';
   navigateToLogin() {
     this.router.navigateByUrl('/login'); // Prilagodite putanju prema vašim potrebama
   }

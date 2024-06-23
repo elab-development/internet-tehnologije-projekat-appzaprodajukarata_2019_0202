@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { Router } from '@angular/router';
 import { EventsComponent } from './events/events.component';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -1,53 +1,77 @@
 <div class="ticket-container">
     <div class="ticket-content">
-        <div class="ticket-form">
-            <h2>Kupovina karte</h2>
-            <form>
-                <div class="form-group">
-                    <label for="selectedRow">Red:</label>
-                    <select id="selectedRow" [(ngModel)]="selectedRow" name="selectedRow" required>
-                        <option value="" disabled selected>Izaberite red</option>
-                        <option *ngFor="let row of rowOptions" [value]="row">{{ row }}</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="selectedSeat">Broj sjedišta:</label>
-                    <select id="selectedSeat" [(ngModel)]="selectedSeat" name="selectedSeat" required>
-                        <option value="" disabled selected>Izaberite broj sjedišta</option>
-                        <option *ngFor="let seat of seatOptions" [value]="seat">{{ seat }}</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cardNumber">Broj kartice:</label>
-                    <input type="text" id="cardNumber" [(ngModel)]="cardNumber" name="cardNumber" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cardHolderName">Ime na kartici:</label>
-                    <input type="text" id="cardHolderName" [(ngModel)]="cardHolderName" name="cardHolderName" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="expiryDate">Datum isteka:</label>
-                    <input type="text" id="expiryDate" [(ngModel)]="expiryDate" name="expiryDate" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cvc">CVC:</label>
-                    <input type="text" id="cvc" [(ngModel)]="cvc" name="cvc" required>
-                </div>
-            
-                <button type="button" (click)="purchaseTicket()">Kupi</button>
-            </form>
+      <div class="ticket-form">
+        <h2>Kupovina karte</h2>
+        <form [formGroup]="ticketForm" (ngSubmit)="purchaseTicket()">
+          <div class="form-group">
+            <label for="selectedRow">Red:</label>
+            <select id="selectedRow" formControlName="selectedRow">
+              <option value="" disabled selected>Izaberite red</option>
+              <option *ngFor="let row of rowOptions" [value]="row">{{ row }}</option>
+            </select>
+            <small class="text-danger" *ngIf="ticketForm.get('selectedRow')?.invalid && (ticketForm.get('selectedRow')?.dirty || ticketForm.get('selectedRow')?.touched)">
+              Red je obavezan.
+            </small>
+          </div>
+  
+          <div class="form-group">
+            <label for="selectedSeat">Broj sedišta:</label>
+            <select id="selectedSeat" formControlName="selectedSeat">
+              <option value="" disabled selected>Izaberite broj sedišta</option>
+              <option *ngFor="let seat of seatOptions" [value]="seat">{{ seat }}</option>
+            </select>
+            <small class="text-danger" *ngIf="ticketForm.get('selectedSeat')?.invalid && (ticketForm.get('selectedSeat')?.dirty || ticketForm.get('selectedSeat')?.touched)">
+              Broj sjedišta je obavezan.
+            </small>
+          </div>
+  
+          <div class="form-group">
+            <label for="cardNumber">Broj kartice:</label>
+            <input type="text" id="cardNumber" formControlName="cardNumber">
+            <small class="text-danger" *ngIf="ticketForm.get('cardNumber')?.invalid && (ticketForm.get('cardNumber')?.dirty || ticketForm.get('cardNumber')?.touched)">
+              Broj kartice mora imati tačno 8 cifara.
+            </small>
+          </div>
+  
+          <div class="form-group">
+            <label for="cardHolderName">Ime na kartici:</label>
+            <input type="text" id="cardHolderName" formControlName="cardHolderName">
+            <small class="text-danger" *ngIf="ticketForm.get('cardHolderName')?.invalid && (ticketForm.get('cardHolderName')?.dirty || ticketForm.get('cardHolderName')?.touched)">
+              Ime na kartici je obavezno.
+            </small>
+          </div>
+  
+          <div class="form-group">
+            <label for="expiryDate">Datum isteka:</label>
+            <input type="text" id="expiryDate" formControlName="expiryDate">
+            <small class="text-danger" *ngIf="ticketForm.get('expiryDate')?.invalid && (ticketForm.get('expiryDate')?.dirty || ticketForm.get('expiryDate')?.touched)">
+              Datum isteka je obavezan.
+            </small>
+          </div>
+  
+          <div class="form-group">
+            <label for="cvc">CVC:</label>
+            <input type="text" id="cvc" formControlName="cvc">
+            <small class="text-danger" *ngIf="ticketForm.get('cvc')?.invalid && (ticketForm.get('cvc')?.dirty || ticketForm.get('cvc')?.touched)">
+              CVC je obavezan.
+            </small>
+          </div>
+  
+          <button type="submit" class="buy" [disabled]="!ticketForm.valid">Kupi</button>
+        </form>
+      </div>
+  
+      <div class="event-details">
+        <img src="../../assets/enfiled.jpg" alt="Event Image" class="event-image">
+        <!-- Ostali detalji događaja -->
+        <div class="cart-info">
+          <span class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+          </span>
+          <span class="cart-text">Moja korpa:</span>
+          <span class="cart-count">{{ brojKupljenihKarata }}</span>
         </div>
-
-        <div class="event-details">
-            <img src="../../assets/enfiled.jpg" alt="Event Image" class="event-image">
-            <!-- Ostali detalji događaja -->
-        </div>
+      </div>
     </div>
-</div>
-
-
+  </div>
+  

@@ -1,24 +1,25 @@
 /* CSS stil za karticu događaja */
+
 .homepage {
-    display: flex;
-    flex-wrap: wrap; /* Omogućava prelazak na novi red kada nema dovoljno prostora */
-    gap: 20px; /* Prostor između kartica */
-    justify-content: center; /* Centriranje kartica po horizontali */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(calc(33.33% - 20px), 1fr)); /* Maksimalno tri kartice u redu */
+    gap: 10px;
+    justify-items: center;
 }
 .card {
-    width: 300px; /* Povećana širina kartice */
-    height: 370px;
+    width: calc(55.33% - 20px); /* Računanje širine kartice za tri u redu */
+    height: 95%;
     border-radius: 10px;
-    border-color: #000000;
-    border-style: double;
+    border: 1px solid #ddd;
     overflow: hidden;
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3); /* Dodavanje veće senke */
-    margin: 20px;
-    background-color: #ffffff; /* Boja pozadine kartice */
-    font-family: 'Arial', sans-serif; /* Promjena fonta */
-    text-align: center; /* Centriranje sadržaja */
-    border: 1px solid #ddd; /* Dodavanje ivice */
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 5px;
+    
 }
+
 
 .card img {
     width: 100%;
@@ -26,25 +27,19 @@
 }
 
 .card h1 {
-    font-size: 1.4em; /* Povećana veličina fonta */
-    color: #333333; /* Boja teksta */
-    margin: 10px 0 5px;
+    font-size: 1.2em; /* Smanjena veličina fonta za naslov */
+    margin: 8px 0 4px;
 }
 
 .card .description {
-    font-size: 1.1em; /* Povećana veličina fonta */
-    color: #0056b3; /* Boja teksta */
-    margin: 0 20px 10px;
-    font-weight: bold; /* Bold tekst za naziv mesta */
+    font-size: 1em; /* Smanjena veličina fonta za opis */
+    margin: 0 10px 8px;
+    font-style: italic;
 }
 
 .card .date {
-    font-size: 1em; /* Povećana veličina fonta */
-    color: #666666; /* Boja teksta */
-    margin: 20px 20px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 0.9em; /* Smanjena veličina fonta za datum */
+    margin: 8px 10px;
 }
 
 .card .date .icon {
@@ -61,8 +56,9 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 1em;
+    margin-bottom: 10px;
 }
 
 .card button:hover {
-    background-color: #45a049; /* Promjena boje na hover */
+    background-color: #0969df; /* Promjena boje na hover */
 }
