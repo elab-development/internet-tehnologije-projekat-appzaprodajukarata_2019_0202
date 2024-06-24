@@ -12,107 +12,95 @@ import { Event } from '../models/event';
 export class EventsComponent {
   events: Event[] = [
     {
-      title: 'Nemačka vs Škotska',
-      description: 'Otvaranje evropskog prvenstva u Nemačkoj 2024.',
-      date: '14.06.2024. 21:00h',
-      imageUrl: '../../assets/euro.jpg'
+      title: "Nemačka vs Engleska",
+      stadium: "Allianz Arena, Munich",
+      date: "15/07/24 21:00",
+      imageUrl: "../../assets/euro.jpg",
     },
     {
-      title: 'Srbija vs Engleska',
-      description: 'Prvi susret naše reprezentacije na evropskom prvenstvu',
-      date: '16.06.2024. 21:00h',
-      imageUrl: '../../assets/euro.jpg'
+      title: "Francuska vs Italija",
+      stadium: "Red Bull Arena, Leipzig",
+      date: "16/07/24 20:30",
+      imageUrl: "../../assets/euro.jpg",
     },
     {
-      title: 'Francuska vs Austrija',
-      description: 'Derbi prvog kola evropskog prvenstva',
-      date: '17.06.2024. 21:00h',
-      imageUrl: '../../assets/euro.jpg'
+      title: "Portugal vs Španija",
+      stadium: "Borussia-Park, Monchengladbach",
+      date: "17/07/24 19:45",
+      imageUrl: "../../assets/euro.jpg",
     },
     {
-      title: 'Španija Italija',
-      description: 'Napeta utakmica između dva fudbalska giganta.',
-      date: '18.06.2024. 21:00h',
-      imageUrl: '../../assets/euro.jpg'
+      title: "Holandija vs Belgija",
+      stadium: "Deutsche Bank Park, Frankfurt",
+      date: "18/07/24 20:00",
+      imageUrl: "../../assets/euro.jpg",
     },
     {
-      title: 'Holandija Portugalija',
-      description: 'Borbeni meč između dva vrhunska tima.',
-      date: '19.06.2024. 21:00h',
-      imageUrl: '../../assets/euro.jpg'
+      title: "Švajcarska vs Austrija",
+      stadium: "Olympiastadion, Berlin",
+      date: "19/07/24 21:15",
+      imageUrl: "../../assets/euro.jpg",
     },
     {
-      title: 'Belgija Hrvatska',
-      description: 'Utakmica koja obećava uzbudljivu igru.',
-      date: '20.06.2024. 21:00h',
-      imageUrl: '../../assets/euro.jpg'
+      title: "Poljska vs Ukrajina",
+      stadium: "WWK Arena, Augsburg",
+      date: "20/07/24 20:45",
+      imageUrl: "../../assets/euro.jpg",
     },
     {
-      title: 'Srbija vs Danska',
-      description: ' Utakmica za prolaz u knock-out fazu nase reprezentacije',
-      date: '25.06.2024. 21:00h',
-      imageUrl: '../../assets/euro.jpg'
+      title: "Švedska vs Danska",
+      stadium: "Schwarzwald-Stadion, Freiburg",
+      date: "21/07/24 20:30",
+      imageUrl: "../../assets/euro.jpg",
     },
     {
-      title: "Euro 2024 Opening Ceremony",
-      description: "Join us for the spectacular opening ceremony of Euro 2024!",
-      date: "2024-06-01",
-      imageUrl: "../../assets/euro.jpg"
-  },
-  {
-      title: "Semifinals - Euro 2024",
-      description: "Witness the thrilling semifinal matches of Euro 2024.",
-      date: "2024-06-19",
-      imageUrl: "../../assets/euro.jpg"
-  },
-  {
-      title: "Final Match - Euro 2024",
-      description: "Experience the intense final match of Euro 2024.",
-      date: "2024-06-30",
-      imageUrl: "../../assets/euro.jpg"
-  },
-  {
-      title: "Euro 2024 Closing Ceremony",
-      description: "Don't miss the closing ceremony of Euro 2024!",
-      date: "2024-07-01",
-      imageUrl: "../../assets/euro.jpg"
-  },
-  {
-      title: "Group Stage Match - Euro 2024",
-      description: "Exciting group stage match of Euro 2024.",
-      date: "2024-06-05",
-      imageUrl: "../../assets/euro.jpg"
-  },
-  {
-      title: "Quarterfinals - Euro 2024",
-      description: "Thrilling quarterfinals of Euro 2024.",
-      date: "2024-06-15",
-      imageUrl: "../../assets/euro.jpg"
-  },
-  // {
-  //     title: "Round of 16 - Euro 2024",
-  //     description: "Exciting round of 16 matches of Euro 2024.",
-  //     date: "2024-06-10",
-  //     imageUrl: "../../assets/euro.jpg"
-  // },
-  // {
-  //     title: "Opening Match - Euro 2024",
-  //     description: "Witness the opening match of Euro 2024!",
-  //     date: "2024-06-01",
-  //     imageUrl: "../../assets/euro.jpg"
-  // },
-  // {
-  //     title: "Euro 2024 Trophy Presentation",
-  //     description: "Be there for the historic trophy presentation of Euro 2024.",
-  //     date: "2024-07-01",
-  //     imageUrl: "../../assets/euro.jpg"
-  // },
-  // {
-  //     title: "Euro 2024 Awards Ceremony",
-  //     description: "Celebrate the champions at the Euro 2024 awards ceremony.",
-  //     date: "2024-07-01",
-  //     imageUrl: "../../assets/euro.jpg"
-  // }
+      title: "Rusija vs Finska",
+      stadium: "Stadion An der Alten Försterei, Berlin",
+      date: "22/07/24 19:00",
+      imageUrl: "../../assets/euro.jpg",
+    },
+    {
+      title: "Mađarska vs Rumunija",
+      stadium: "SchücoArena, Bielefeld",
+      date: "23/07/24 20:00",
+      imageUrl: "../../assets/euro.jpg",
+    },
+    {
+      title: "Irska vs Wales",
+      stadium: "Max-Morlock-Stadion, Nurnberg",
+      date: "24/07/24 18:30",
+      imageUrl: "../../assets/euro.jpg",
+    },
+    {
+      title: "Češka vs Slovačka",
+      stadium: "Jonathan-Heimes-Stadion am Böllenfalltor, Darmstadt",
+      date: "25/07/24 19:45",
+      imageUrl: "../../assets/euro.jpg",
+    },
+    {
+      title: "Škotska vs Hrvatska",
+      stadium: "BWT-Stadion am Hardtwald, Sandhausen",
+      date: "26/07/24 20:30",
+      imageUrl: "../../assets/euro.jpg",
+    },
+    {
+      title: "Turska vs Srbija",
+      stadium: "Benteler-Arena, Paderborn",
+      date: "27/07/24 19:00",
+      imageUrl: "../../assets/euro.jpg",
+    },
+    {
+      title: "Bugarska vs Finska",
+      stadium: "Mercedes-Benz Arena, Stuttgart",
+      date: "28/07/24 18:00",
+      imageUrl: "../../assets/euro.jpg",
+    },
+    {
+      title: "Rumunija vs Luksemburg",
+      stadium: "Volkswagen Arena, Wolfsburg",
+      date: "29/07/24 17:30",
+      imageUrl: "../../assets/euro.jpg",
+    },
   ];
 
   paginatedEvents :  Event[] = [];

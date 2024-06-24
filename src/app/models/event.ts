@@ -1,6 +1,6 @@
 export interface Event {
     title: string;
-    description: string;
+    stadium: string;
     date: string;
     imageUrl: string;
 }

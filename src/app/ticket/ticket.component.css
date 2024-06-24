@@ -11,8 +11,8 @@
 .ticket-content {
     display: flex;
     align-items: center;
-    height: 570px;
-    margin-top: 20px;
+    height: 490px;
+    margin-top: 50px;
 }
 
 .ticket-image {

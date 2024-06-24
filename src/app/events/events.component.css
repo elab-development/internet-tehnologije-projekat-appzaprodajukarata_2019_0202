@@ -2,16 +2,17 @@
 
 .homepage {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(calc(450px - 20px), 1fr)); /* Maksimalno tri kartice u redu */
+    grid-template-columns: repeat(auto-fit, minmax(calc(33.33% - 20px), 1fr)); /* Maksimalno tri kartice u redu */
     gap: 5px;
     justify-items: center;
     margin-top: 20px;
     margin-left: 50px;
     margin-right: 50px;
 }
+
 .card {
     width: 250px; /* Računanje širine kartice za tri u redu */
-    height: 95%;
+    height: 300px;
     border-radius: 10px;
     border: 1px solid #ddd;
     overflow: hidden;
@@ -20,7 +21,9 @@
     font-family: 'Arial', sans-serif;
     text-align: center;
     margin: 5px;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card img {
@@ -29,44 +32,48 @@
 }
 
 .card h1 {
-    font-size: 1.2em; /* Smanjena veličina fonta za naslov */
-    margin: 8px 0 4px;
+    font-size: 1.2em;
+    margin: 0;
+    margin-top: -15px; /* Dodajemo 15px margine iznad naslova */
 }
 
-.card .description {
-    font-size: 0.8em; /* Smanjena veličina fonta za opis */
-    margin: 0 10px 8px;
+.card .stadium {
+    font-size: 0.8em;
+    margin-bottom: 5px; /* Smanjujemo razmak ispod opisa na 5px */
     font-style: italic;
+    height: auto; /* Uklanjamo fiksiranu visinu, neophodno ako je automatska visina */
+    flex-grow: 1;
+    margin-top: -15px; /* Dodajemo 15px margine iznad opisa */
 }
 
 .card .date {
     font-size: 0.9em; /* Smanjena veličina fonta za datum */
     margin: 8px 10px;
+    margin-top: -10px;
 }
 
 .card .date .icon {
     margin-right: 10px;
-    margin-bottom: 100px;
 }
 
 .card button {
     background-color: #180660; /* Boja pozadine dugmeta */
     color: #ffffff; /* Boja teksta na dugmetu */
-    padding: 10px 20px;
+    padding: 5px 5px; /* Smanjen padding dugmeta */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 1em;
-    margin-bottom: 10px;
+    font-size: 0.9em; /* Smanjena veličina fonta */
+    margin: 0 auto 5px; /* Centriranje dugmeta horizontalno */
+    width: 100px;
 }
 
 .card button:hover {
     background-color: #0969df; /* Promena boje na hover */
 }
-
 .pagination-controls {
-    width: 150px;
+    width: 130px;
     position: fixed;
     bottom: 10px;
     right: 10px;

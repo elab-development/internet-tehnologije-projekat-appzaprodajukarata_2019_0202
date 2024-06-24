@@ -1,39 +1,51 @@
-/* header.component.css */
-
 .navbar {
   background-color: rgba(0, 0, 0, 0.2);
   overflow: hidden;
   display: flex;
-  justify-content: space-between; /* Raspored elementa po horizontali */
-  align-items: center; /* Centriranje vertikalno */
-  padding: 10px 20px; /* Unutrašnji padding */
-  height: 35px; /* Prilagoditi visinu navigacionog bara */
+  justify-content: space-between;
+  align-items: flex-start; /* Promenjeno sa 'center' na 'flex-start' */
+  padding: 10px 20px;
+  height: 70px; /* Povećana visina */
 }
 
 .left-section {
   display: flex;
-  align-items: center; /* Centriranje elemenata vertikalno */
+  align-items: flex-start; /* Promenjeno sa 'center' na 'flex-start' */
+
 }
 
 .left-section a {
   color: #f2f2f2;
   text-align: center;
-  padding: 10px 20px; /* Unutrašnji padding */
+  padding: 10px 10px; /* Smanjen padding */
   text-decoration: none;
   display: flex;
-  align-items: center; /* Centriranje vertikalno */
+  align-items: center;
+  transition: background-color 0.3s ease, padding 0.3s ease; /* Dodata tranzicija za padding */
+  margin-left: 15px;
+}
+
+.left-section a:first-child {
+  padding: 0; /* Uklonjena padding za ikonu da bi bila pravilno poravnata */
 }
 
 .left-section a:hover {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  padding: 8px 18px;
+  padding: 10px 10px; /* Smanjen padding pri hoveru */
 }
 
 .left-section .nav-icon {
-  width: 70px; /* Prilagodi veličinu ikone prema potrebi */
-  height: 70px; /* Prilagodi veličinu ikone prema potrebi */
-  margin-right: 10px; /* Razmak između ikone i tekstualnog linka */
+  width: 60px;
+  height: 60px;
+  margin-right: 0px;
+  align-self: flex-start; /* Dodato da bi ikona bila poravnata na vrhu */
+  transition: background-color 0.3s ease; /* Dodata tranzicija za hover */
+  margin-left: -15px;
+}
+
+.left-section .nav-icon:hover {
+  background-color: transparent; /* Uklonjen efekat hovera za ikonu */
 }
 
 .right-section a {
@@ -42,7 +54,7 @@
   padding: 10px 20px;
   text-decoration: none;
   display: flex;
-  align-items: center; /* Centriranje vertikalno */
+  align-items: center;
 }
 
 .login-button {
@@ -59,5 +71,4 @@
 .login-button:hover {
   background-color: #18c7e1;
   color: #333;
-  
 }
