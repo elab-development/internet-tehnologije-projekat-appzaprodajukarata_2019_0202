@@ -15,6 +15,7 @@ import { MaterialModule } from './material/material.module';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { TokenInterceptor } from './token.interceptor';
+import { InputBorderHighlightDirective } from './directives/input-border-highlight.directive';
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import { TokenInterceptor } from './token.interceptor';
     HeaderComponent,
     LoginComponent,
     TicketComponent,
-    ProfileComponent
+    ProfileComponent,
+    InputBorderHighlightDirective,
+
   ],
   imports: [
     BrowserModule,

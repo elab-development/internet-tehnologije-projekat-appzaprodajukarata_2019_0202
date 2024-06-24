@@ -5,7 +5,7 @@
         <form [formGroup]="ticketForm" (ngSubmit)="purchaseTicket()">
           <div class="form-group">
             <label for="selectedRow">Red:</label>
-            <select id="selectedRow" formControlName="selectedRow">
+            <select id="selectedRow" formControlName="selectedRow" appInputBorderHighlight>
               <option value="" disabled selected>Izaberite red</option>
               <option *ngFor="let row of rowOptions" [value]="row">{{ row }}</option>
             </select>
@@ -16,7 +16,7 @@
   
           <div class="form-group">
             <label for="selectedSeat">Broj sedišta:</label>
-            <select id="selectedSeat" formControlName="selectedSeat">
+            <select id="selectedSeat" formControlName="selectedSeat" appInputBorderHighlight>
               <option value="" disabled selected>Izaberite broj sedišta</option>
               <option *ngFor="let seat of seatOptions" [value]="seat">{{ seat }}</option>
             </select>
@@ -27,7 +27,7 @@
   
           <div class="form-group">
             <label for="cardNumber">Broj kartice:</label>
-            <input type="text" id="cardNumber" formControlName="cardNumber">
+            <input type="text" id="cardNumber" formControlName="cardNumber" appInputBorderHighlight>
             <small class="text-danger" *ngIf="ticketForm.get('cardNumber')?.invalid && (ticketForm.get('cardNumber')?.dirty || ticketForm.get('cardNumber')?.touched)">
               Broj kartice mora imati tačno 8 cifara.
             </small>
@@ -35,7 +35,7 @@
   
           <div class="form-group">
             <label for="cardHolderName">Ime na kartici:</label>
-            <input type="text" id="cardHolderName" formControlName="cardHolderName">
+            <input type="text" id="cardHolderName" formControlName="cardHolderName"appInputBorderHighlight >
             <small class="text-danger" *ngIf="ticketForm.get('cardHolderName')?.invalid && (ticketForm.get('cardHolderName')?.dirty || ticketForm.get('cardHolderName')?.touched)">
               Ime na kartici je obavezno.
             </small>
@@ -43,7 +43,7 @@
   
           <div class="form-group">
             <label for="expiryDate">Datum isteka:</label>
-            <input type="text" id="expiryDate" formControlName="expiryDate">
+            <input type="text" id="expiryDate" formControlName="expiryDate"appInputBorderHighlight>
             <small class="text-danger" *ngIf="ticketForm.get('expiryDate')?.invalid && (ticketForm.get('expiryDate')?.dirty || ticketForm.get('expiryDate')?.touched)">
               Datum isteka mora biti u formatu MM/YY.
           </small>
@@ -51,7 +51,7 @@
   
           <div class="form-group">
             <label for="cvc">CVC:</label>
-            <input type="text" id="cvc" formControlName="cvc">
+            <input type="text" id="cvc" formControlName="cvc"appInputBorderHighlight>
             <small class="text-danger" *ngIf="ticketForm.get('cvc')?.invalid && (ticketForm.get('cvc')?.dirty || ticketForm.get('cvc')?.touched)">
               CVC mora biti unet u ispravnom formatu.
             </small>
