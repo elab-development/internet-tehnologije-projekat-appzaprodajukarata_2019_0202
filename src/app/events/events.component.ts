@@ -46,9 +46,44 @@ export class EventsComponent {
       description: 'Utakmica koja obećava uzbudljivu igru.',
       date: '20.06.2024. 21:00h',
       imageUrl: '../../assets/euro.jpg'
+    },
+    {
+      title: 'Srbija vs Danska',
+      description: ' Utakmica za prolaz u knock-out fazu nase reprezentacije',
+      date: '25.06.2024. 21:00h',
+      imageUrl: '../../assets/euro.jpg'
     }
   ];
 
+  paginatedEvents :  Event[] = [];
+  currentPage = 1;
+  itemsPerPage = 6;
+  totalPages = 0;
+
+  ngOnInit() {
+    this.totalPages = Math.ceil(this.events.length / this.itemsPerPage);
+    this.updatePaginatedEvents();
+  }
+
+  updatePaginatedEvents() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedEvents = this.events.slice(startIndex, endIndex);
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePaginatedEvents();
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePaginatedEvents();
+    }
+  }
 
   constructor(@Inject(MatDialog) public dialog: MatDialog, private router:Router) {}
 

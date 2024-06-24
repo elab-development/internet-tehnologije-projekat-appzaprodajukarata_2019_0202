@@ -1,14 +1,17 @@
 <div class="homepage">
-    <!-- src/app/events/events.component.html -->
-<!-- src/app/events/events.component.html -->
-<div *ngFor="let event of events" class="card">
-  <img [src]="event.imageUrl" alt="Event Image" class="image" />
-  <h1>{{ event.title }}</h1>
-  <p class="description">{{ event.description }}</p>
-  <p class="date">
-    <i class="fas fa-calendar-alt"></i> {{ event.date }}
-  </p>
-  <button class="overlay-button" (click)="navigateToTicketComponent()">Kupi ulaznicu</button>
+  <div class="card" *ngFor="let event of paginatedEvents">
+      <img src="{{ event.imageUrl}}" alt="Event Image">
+      <h1>{{ event.title }}</h1>
+      <div class="description">{{ event.description }}</div>
+      <div class="date">
+          <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+          {{ event.date }}
+      </div>
+      <button class="overlay-button" (click)="navigateToTicketComponent()">Kupi ulaznicu</button>  </div>
+</div>
+<div class="pagination-controls">
+  <button (click)="prevPage()" [disabled]="currentPage === 1"><</button>
+  
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">></button>
 </div>
 
-</div>
