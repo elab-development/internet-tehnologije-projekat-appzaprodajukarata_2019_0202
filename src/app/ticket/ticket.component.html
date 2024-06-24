@@ -45,15 +45,15 @@
             <label for="expiryDate">Datum isteka:</label>
             <input type="text" id="expiryDate" formControlName="expiryDate">
             <small class="text-danger" *ngIf="ticketForm.get('expiryDate')?.invalid && (ticketForm.get('expiryDate')?.dirty || ticketForm.get('expiryDate')?.touched)">
-              Datum isteka je obavezan.
-            </small>
+              Datum isteka mora biti u formatu MM/YY.
+          </small>
           </div>
   
           <div class="form-group">
             <label for="cvc">CVC:</label>
             <input type="text" id="cvc" formControlName="cvc">
             <small class="text-danger" *ngIf="ticketForm.get('cvc')?.invalid && (ticketForm.get('cvc')?.dirty || ticketForm.get('cvc')?.touched)">
-              CVC je obavezan.
+              CVC mora biti unet u ispravnom formatu.
             </small>
           </div>
   

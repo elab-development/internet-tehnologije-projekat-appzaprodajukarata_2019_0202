@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-ticket-purchase',
@@ -8,7 +8,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TicketComponent {
   ticketForm: FormGroup;
-  brojKupljenihKarata: number = 0;
 
   selectedRow: string = '';
   selectedSeat: number = 0;
@@ -19,19 +18,18 @@ export class TicketComponent {
 
   rowOptions: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
   seatOptions: number[] = Array.from({ length: 20 }, (_, i) => i + 1);
+
   purchasedTickets: { row: string, seat: number }[] = [];
-
-
-  // Proveri da li je odabrana karta već kupljena
+  brojKupljenihKarata: number = 0;
 
   constructor(private fb: FormBuilder) {
     this.ticketForm = this.fb.group({
       selectedRow: ['', Validators.required],
-      selectedSeat: ['', Validators.required],
+      selectedSeat: ['', [Validators.required, Validators.min(1), Validators.max(20)]],
       cardNumber: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
       cardHolderName: ['', Validators.required],
-      expiryDate: ['', Validators.required],
-      cvc: ['', Validators.required]
+      expiryDate: ['', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/), this.expiryDateValidator]],
+      cvc: ['', [Validators.required, Validators.maxLength(3), Validators.minLength(3)]]
     });
   }
 
@@ -42,17 +40,12 @@ export class TicketComponent {
         seat: this.ticketForm.get('selectedSeat')?.value
       };
 
-      // Proveri da li je odabrana karta već kupljena
       const alreadyPurchased = this.purchasedTickets.some(ticket =>
         ticket.row === selectedTicket.row && ticket.seat === selectedTicket.seat
       );
-      for (let ticket of this.purchasedTickets) {
-        console.log(ticket);
-      }
-   //   console.log(this.alreadyPurchased);
 
       if (alreadyPurchased) {
-        alert('Već ste kupili ovu kartu.');
+        alert('Već ste kupili kartu za ovaj red i broj sedišta.');
       } else {
         this.purchasedTickets.push(selectedTicket);
         this.brojKupljenihKarata++;
@@ -61,8 +54,18 @@ export class TicketComponent {
         console.log('Sve kupljene karte:', this.purchasedTickets);
       }
     } else {
-      // Ukoliko forma nije validna, možete dodati dodatne provere ili poruke korisniku
       alert('Molimo vas da popunite ispravno sva polja.');
     }
+  }
+
+  expiryDateValidator(control: AbstractControl): ValidationErrors | null {
+    const value = control.value;
+    if (value) {
+      const [month, year] = value.split('/');
+      if (parseInt(month, 10) > 12) {
+        return { invalidMonth: true };
+      }
+    }
+    return null;
   }
 }
