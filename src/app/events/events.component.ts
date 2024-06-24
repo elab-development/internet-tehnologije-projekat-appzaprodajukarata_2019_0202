@@ -52,7 +52,67 @@ export class EventsComponent {
       description: ' Utakmica za prolaz u knock-out fazu nase reprezentacije',
       date: '25.06.2024. 21:00h',
       imageUrl: '../../assets/euro.jpg'
-    }
+    },
+    {
+      title: "Euro 2024 Opening Ceremony",
+      description: "Join us for the spectacular opening ceremony of Euro 2024!",
+      date: "2024-06-01",
+      imageUrl: "../../assets/euro.jpg"
+  },
+  {
+      title: "Semifinals - Euro 2024",
+      description: "Witness the thrilling semifinal matches of Euro 2024.",
+      date: "2024-06-19",
+      imageUrl: "../../assets/euro.jpg"
+  },
+  {
+      title: "Final Match - Euro 2024",
+      description: "Experience the intense final match of Euro 2024.",
+      date: "2024-06-30",
+      imageUrl: "../../assets/euro.jpg"
+  },
+  {
+      title: "Euro 2024 Closing Ceremony",
+      description: "Don't miss the closing ceremony of Euro 2024!",
+      date: "2024-07-01",
+      imageUrl: "../../assets/euro.jpg"
+  },
+  {
+      title: "Group Stage Match - Euro 2024",
+      description: "Exciting group stage match of Euro 2024.",
+      date: "2024-06-05",
+      imageUrl: "../../assets/euro.jpg"
+  },
+  {
+      title: "Quarterfinals - Euro 2024",
+      description: "Thrilling quarterfinals of Euro 2024.",
+      date: "2024-06-15",
+      imageUrl: "../../assets/euro.jpg"
+  },
+  // {
+  //     title: "Round of 16 - Euro 2024",
+  //     description: "Exciting round of 16 matches of Euro 2024.",
+  //     date: "2024-06-10",
+  //     imageUrl: "../../assets/euro.jpg"
+  // },
+  // {
+  //     title: "Opening Match - Euro 2024",
+  //     description: "Witness the opening match of Euro 2024!",
+  //     date: "2024-06-01",
+  //     imageUrl: "../../assets/euro.jpg"
+  // },
+  // {
+  //     title: "Euro 2024 Trophy Presentation",
+  //     description: "Be there for the historic trophy presentation of Euro 2024.",
+  //     date: "2024-07-01",
+  //     imageUrl: "../../assets/euro.jpg"
+  // },
+  // {
+  //     title: "Euro 2024 Awards Ceremony",
+  //     description: "Celebrate the champions at the Euro 2024 awards ceremony.",
+  //     date: "2024-07-01",
+  //     imageUrl: "../../assets/euro.jpg"
+  // }
   ];
 
   paginatedEvents :  Event[] = [];

@@ -2,7 +2,7 @@
 
 .homepage {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(calc(33.33% - 20px), 1fr)); /* Maksimalno tri kartice u redu */
+    grid-template-columns: repeat(auto-fit, minmax(calc(450px - 20px), 1fr)); /* Maksimalno tri kartice u redu */
     gap: 5px;
     justify-items: center;
     margin-top: 20px;
@@ -10,7 +10,7 @@
     margin-right: 50px;
 }
 .card {
-    width: calc(55.33% - 20px); /* Računanje širine kartice za tri u redu */
+    width: 250px; /* Računanje širine kartice za tri u redu */
     height: 95%;
     border-radius: 10px;
     border: 1px solid #ddd;
@@ -21,7 +21,6 @@
     text-align: center;
     margin: 5px;
     
-
 }
 
 .card img {
@@ -35,7 +34,7 @@
 }
 
 .card .description {
-    font-size: 1em; /* Smanjena veličina fonta za opis */
+    font-size: 0.8em; /* Smanjena veličina fonta za opis */
     margin: 0 10px 8px;
     font-style: italic;
 }
@@ -46,8 +45,8 @@
 }
 
 .card .date .icon {
-    margin-right: 150px;
-    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-bottom: 100px;
 }
 
 .card button {
@@ -65,7 +64,6 @@
 .card button:hover {
     background-color: #0969df; /* Promena boje na hover */
 }
-
 
 .pagination-controls {
     width: 150px;
