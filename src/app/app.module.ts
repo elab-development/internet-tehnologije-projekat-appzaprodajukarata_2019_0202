@@ -10,6 +10,11 @@ import { TicketComponent } from './ticket/ticket.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MaterialModule } from './material/material.module';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
+import { TokenInterceptor } from './token.interceptor';
 
 
 @NgModule({
@@ -19,15 +24,24 @@ import { ReactiveFormsModule } from '@angular/forms';
     EventsComponent,
     HeaderComponent,
     LoginComponent,
-    TicketComponent
+    TicketComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptor,
+    multi : true,
+  },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
