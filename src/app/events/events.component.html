@@ -1,5 +1,5 @@
 <div class="homepage">
-  <div class="card" *ngFor="let event of paginatedEvents">
+  <div class="card" *ngFor="let event of paginatedEvents" appCardHighlight>
       <img src="{{ event.imageUrl}}" alt="Event Image">
       <h1>{{ event.title }}</h1>
       <div class="stadium">{{ event.stadium }}</div>

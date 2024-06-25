@@ -16,6 +16,8 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { ProfileComponent } from './profile/profile.component';
 import { TokenInterceptor } from './token.interceptor';
 import { InputBorderHighlightDirective } from './directives/input-border-highlight.directive';
+import { CardHighlightDirective } from './directives/card-highlight.directive';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { InputBorderHighlightDirective } from './directives/input-border-highlig
     TicketComponent,
     ProfileComponent,
     InputBorderHighlightDirective,
+    CardHighlightDirective,
+    FooterComponent,
 
   ],
   imports: [
