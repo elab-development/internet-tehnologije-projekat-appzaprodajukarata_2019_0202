@@ -18,6 +18,11 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
     }
 
+    protected $middleware = [
+        // Ostali middleware
+        \App\Http\Middleware\Cors::class,
+    ];
+    
     /**
      * Register the commands for the application.
      *

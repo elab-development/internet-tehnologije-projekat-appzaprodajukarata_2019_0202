@@ -17,21 +17,13 @@ class EventsFactory extends Factory
     public function definition()
     {
         $teams = [
-            'Manchester United', 'Barcelona', 'Real Madrid', 'Juventus', 'Bayern Munich', 'Liverpool',
-            'Paris Saint-Germain', 'Chelsea', 'Manchester City', 'Atletico Madrid', 'Borussia Dortmund',
-            'Inter Milan', 'AC Milan', 'Tottenham Hotspur', 'Ajax', 'Porto', 'Benfica', 'Sevilla',
-            'Lazio', 'RB Leipzig', 'Zenit', 'Shakhtar Donetsk', 'Galatasaray', 'Olympiacos', 'Celtic',
-            'Rangers', 'Dynamo Kiev', 'Club Brugge', 'Partizan', 'Anderlecht', 'PSV Eindhoven',
-            'Fenerbahçe'
+            'Nemačka', 'Francuska', 'Engleska', 'Španija', 'Italija', 'Holandija', 'Belgija', 'Portugal', 'Hrvatska', 
+            'Danska','Švedska', 'Švajcarska', 'Poljska', 'Austrija', 'Češka', 'Ukrajina', 'Mađarska', 'Slovačka',
+            'Turska','Slovenija','Gruzija', 'Austrija', 'Škotska', 'Srbija'
         ];
         $stadiums = [
-            'Old Trafford', 'Camp Nou', 'Santiago Bernabeu', 'Allianz Stadium', 'Allianz Arena',
-            'Anfield', 'Parc des Princes', 'Stamford Bridge', 'Etihad Stadium', 'Wanda Metropolitano',
-            'Signal Iduna Park', 'San Siro', 'Tottenham Hotspur Stadium', 'Amsterdam Arena',
-            'Estadio do Dragao', 'Estadio da Luz', 'Ramon Sanchez-Pizjuan', 'Stadio Olimpico',
-            'Red Bull Arena', 'Gazprom Arena', 'Donbass Arena', 'Türk Telekom Stadium', 'Karaiskakis Stadium',
-            'Celtic Park', 'Ibrox Stadium', 'NSC Olimpiyskiy', 'Jan Breydel Stadium', 'Stadion JNA',
-            'Constant Vanden Stock Stadium', 'Philips Stadion', 'Ülker Stadium'
+            'Olympiastadion', 'Allianz Arena', 'Westfalenstadion', 'MHPArena', 'Arena AufSchalke',
+            'Volksparkstadion', 'Merkur Spiel-Arena', 'Waldstadion', 'RheinEnergieStadion', 'Red Bull Arena'
         ];
         $team1 = $this->faker->randomElement($teams);
         do {
@@ -41,7 +33,7 @@ class EventsFactory extends Factory
         return [
             'name' => "$team1 vs $team2",
             'stadium' => $this->faker->randomElement($stadiums),
-            'date' => $this->faker->dateTimeBetween('now', '+1 year')->format('Y-m-d'),
+            'date' => $this->faker->dateTimeBetween('now', '+1 month')->format('Y-m-d'),
             'time' => $this->faker->time,
         ];
     }
