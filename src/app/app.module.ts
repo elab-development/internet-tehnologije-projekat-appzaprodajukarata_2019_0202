@@ -18,6 +18,7 @@ import { TokenInterceptor } from './token.interceptor';
 import { InputBorderHighlightDirective } from './directives/input-border-highlight.directive';
 import { CardHighlightDirective } from './directives/card-highlight.directive';
 import { FooterComponent } from './footer/footer.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 
 @NgModule({
