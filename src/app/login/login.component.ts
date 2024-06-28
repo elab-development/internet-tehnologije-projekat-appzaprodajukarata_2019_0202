@@ -10,11 +10,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   isSignUp = false;
+  resetPasswordMode = false;
   isLoading = false;
   error: string | null = null;
-  resetPasswordMode = false;
-  newPassword: string = '';
-  confirmPassword: string = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -22,6 +20,7 @@ export class LoginComponent {
     if (!form.valid) {
       return;
     }
+
     const email = form.value.email;
     const password = form.value.password;
 
@@ -40,13 +39,19 @@ export class LoginComponent {
         }
       });
     } else if (this.resetPasswordMode) {
-      this.authService.resetPassword(email, this.newPassword).subscribe({
+      const newPassword = form.value.newPassword;
+      const confirmPassword = form.value.confirmPassword;
+
+      if (newPassword !== confirmPassword) {
+        this.error = 'Passwords do not match!';
+        this.isLoading = false;
+        return;
+      }
+
+      this.authService.resetPassword(email, newPassword).subscribe({
         next: () => {
           this.isLoading = false;
-          this.error = null;
           this.resetPasswordMode = false;
-          this.newPassword = '';
-          this.confirmPassword = '';
         },
         error: (errMessage) => {
           this.error = errMessage;
@@ -69,19 +74,21 @@ export class LoginComponent {
     form.reset();
   }
 
-  switchButtonClicked() {
-    this.isSignUp = !this.isSignUp;
+  switchToLogin() {
+    this.isSignUp = false;
     this.resetPasswordMode = false;
     this.error = null;
   }
 
-  showResetPasswordForm() {
+  switchToSignUp() {
+    this.isSignUp = true;
+    this.resetPasswordMode = false;
+    this.error = null;
+  }
+
+  switchToResetPassword() {
     this.resetPasswordMode = true;
-    this.error = null;
-  }
-
-  backToLogin() {
-    this.resetPasswordMode = false;
+    this.isSignUp = false;
     this.error = null;
   }
 }
