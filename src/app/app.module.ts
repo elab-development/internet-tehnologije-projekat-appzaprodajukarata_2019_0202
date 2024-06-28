@@ -19,6 +19,13 @@ import { InputBorderHighlightDirective } from './directives/input-border-highlig
 import { CardHighlightDirective } from './directives/card-highlight.directive';
 import { FooterComponent } from './footer/footer.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from './services/auth.service';
+
 
 
 @NgModule({
@@ -36,6 +43,11 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 
   ],
   imports: [
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

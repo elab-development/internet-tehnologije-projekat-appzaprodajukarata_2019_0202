@@ -6,6 +6,12 @@
     <a routerLink="/events">Events</a>
   </div>
   <div class="right-section">
-    <a routerLink="/login" class="login-button">Login</a>
+    <ng-container *ngIf="isLoggedIn(); else loginSection">
+      <a (click)="logOut()" class="login-button">Logout</a>
+    </ng-container>
+    <ng-template #loginSection>
+      <a routerLink="/login" class="login-button">Login</a>
+    </ng-template>
   </div>
 </header>
+

@@ -1,35 +1,71 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginForm: FormGroup;
+  isLoading: boolean = false;
+  error: string = "";
+  isSignUp = false;
+  isLoggedIn: boolean = false;
 
-  get emailFormControl() {
+  constructor(private authService: AuthService, private router: Router) { }
 
-    return this.loginForm.get('email') as FormControl;
+  onSubmit(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+    const name = form.value.name;
+
+    this.isLoading = true;
+
+    if (this.isSignUp) {
+      this.authService.signUp(email, password, name).subscribe(
+        (data: any) => {
+          console.log(data);
+          this.isLoading = false;
+          this.router.navigate(['/events']); // Preusmeravanje na events stranicu
+        },
+        (error) => {
+          console.error(error);
+          this.isLoading = false;
+          this.error = error.message; // Prikazivanje greške ako postoji
+        }
+      );
+    } else {
+      this.authService.logIn(email, password).subscribe(
+        (data: any) => {
+          console.log(data);
+          this.isLoading = false;
+          this.router.navigate(['/events']); // Preusmeravanje na events stranicu
+        },
+        (error) => {
+          console.error(error);
+          this.isLoading = false;
+          this.error = error.message; // Prikazivanje greške ako postoji
+        }
+      );
+    }
+
+    form.reset();
   }
-  get passwordFormControl() {
-    return this.loginForm.get('password') as FormControl;
+  logout() {
+    this.authService.logOut(); // Metoda za odjavljivanje
+    this.router.navigate(['/events']); // Preusmeravanje na events stranicu nakon odjavljivanja
+    this.isLoggedIn = false; // Ažuriranje statusa prijavljenosti
   }
-
-  constructor(private fb: FormBuilder, private authService:AuthService) { }
-
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required]],
-    })
+  switchButtonClicked() {
+    this.isSignUp = !this.isSignUp;
+    if (this.isSignUp) {
+      document.getElementById("loginButton")!.innerText = "Sign Up";
+      document.getElementById("switchButton")!.innerText = "Switch to Login";
+    } else {
+      document.getElementById("loginButton")!.innerText = "Login";
+      document.getElementById("switchButton")!.innerText = "Switch to Sign Up";
+    }
   }
-  onSubmit() {
-    if(this.loginForm.valid) this.authService
-    .login(this.loginForm.value)
-    .subscribe((res)=>localStorage.setItem('token', res.access_token));
-  }
-
 }

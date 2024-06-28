@@ -1,25 +1,53 @@
-<form class="example-form" [formGroup]="loginForm"(ngSubmit)="onSubmit()">
-    <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
-        <mat-error *ngIf=" 
-        emailFormControl.hasError('email') && 
-        !emailFormControl.hasError('required')">
-            Please enter a valid email address</mat-error>
+<div class="custom-container">
+  <div class="custom-row">
+    <div class="custom-col">
+      <div class="custom-alert" *ngIf="error">
+        <p>{{ error }}</p>
+      </div>
 
-        <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-        </mat-error>
+      <!-- Forma za Login -->
+      <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isSignUp && !isLoading">
+        <div class="custom-form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" class="custom-form-control" ngModel name="email" required email>
+        </div>
+        <div class="custom-form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="custom-form-control" ngModel name="password" required minlength="6">
+        </div>
+        <div class="custom-buttons">
+          <button class="custom-btn custom-btn-primary" type="submit" [disabled]="!authForm.valid" id="loginButton">
+            Login
+          </button>
+          <button class="custom-btn custom-btn-secondary" (click)="switchButtonClicked()" id="switchButton" type="button">
+            Switch to Sign up
+          </button>
+        </div>
+      </form>
 
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-        <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password" />
-
-        <mat-error *ngIf= "passwordFormControl.hasError('required')">
-            Password is <strong>required</strong>
-        </mat-error>
-
-    </mat-form-field>
-    <button mat-raised-button color = "primary">Submit</button>
-</form>
+      <!-- Forma za Sign up -->
+      <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" *ngIf="isSignUp && !isLoading">
+        <div class="custom-form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="custom-form-control" ngModel name="name" required>
+        </div>
+        <div class="custom-form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" class="custom-form-control" ngModel name="email" required email>
+        </div>
+        <div class="custom-form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="custom-form-control" ngModel name="password" required minlength="6">
+        </div>
+        <div class="custom-buttons">
+          <button class="custom-btn custom-btn-primary" type="submit" [disabled]="!signupForm.valid" id="signupButton">
+            Sign up
+          </button>
+          <button class="custom-btn custom-btn-secondary" (click)="switchButtonClicked()" id="switchButton" type="button">
+            Switch to Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
