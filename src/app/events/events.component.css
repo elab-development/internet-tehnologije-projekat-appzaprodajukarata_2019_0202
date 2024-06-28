@@ -1,18 +1,59 @@
-/* CSS stil za karticu događaja */
-
-.homepage {
+.custom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+  }
+  
+  .controls {
+    display: flex;
+    flex-direction: column;
+    width: 20%; /* Adjust width as needed */
+    margin-right: 20px; /* Space between controls and cards */
+  }
+  
+  .search-bar {
+    margin-bottom: 10px;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100px;
+  }
+  
+  .sort-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sort-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .sort-container select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100px;
+  }
+  
+  .homepage {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc(23.33% - 20px), 1fr)); /* Maksimalno tri kartice u redu */
     gap: 5px;
     justify-items: center;
-    margin-top: 20px;
-    margin-left: 100px;
-    margin-right: 50px;
-}
-
-.card {
+    flex-grow: 1; /* Allow to grow and fill the remaining space */
+  }
+  
+  .card {
     width: 250px; /* Računanje širine kartice za tri u redu */
-    height: 300px;
+    height: 310px;
     border-radius: 10px;
     border: 1px solid #ddd;
     overflow: hidden;
@@ -24,41 +65,36 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 50px;
-    margin-top: -5px;
-}
-
-.card img {
+    margin-right: 300px;
+  }
+  
+  .card img {
     width: 100%;
     height: auto; /* Automatska visina da bi zadržala proporcije */
-}
-
-.card h1 {
+  }
+  
+  .card h1 {
     font-size: 1.2em;
     margin: 0;
-    margin-top: -15px; /* Dodajemo 15px margine iznad naslova */
-}
-
-.card .stadium {
+  }
+  
+  .card .stadium {
     font-size: 0.8em;
     margin-bottom: 5px; /* Smanjujemo razmak ispod opisa na 5px */
     font-style: italic;
-    height: auto; /* Uklanjamo fiksiranu visinu, neophodno ako je automatska visina */
     flex-grow: 1;
-    margin-top: -15px; /* Dodajemo 15px margine iznad opisa */
-}
-
-.card .date {
+  }
+  
+  .card .date {
     font-size: 0.9em; /* Smanjena veličina fonta za datum */
     margin: 8px 10px;
-    margin-top: -10px;
-}
-
-.card .date .icon {
+  }
+  
+  .card .date .icon {
     margin-right: 10px;
-}
-
-.card button {
+  }
+  
+  .card button {
     background-color: #180660; /* Boja pozadine dugmeta */
     color: #ffffff; /* Boja teksta na dugmetu */
     padding: 5px 5px; /* Smanjen padding dugmeta */
@@ -68,28 +104,27 @@
     transition: background-color 0.3s ease;
     font-size: 0.9em; /* Smanjena veličina fonta */
     margin: 0 auto 5px; /* Centriranje dugmeta horizontalno */
-    width: 100px;
-}
-
-.card button:hover {
+  }
+  
+  .card button:hover {
     background-color: #0969df; /* Promena boje na hover */
-}
-.pagination-controls {
+  }
+  
+  .pagination-controls {
     width: 130px;
     position: fixed;
     bottom: 5px;
     right: 10px;
     display: flex;
     align-items: center;
-    background: rgba(0,0,0 0.2);
+    background: rgba(0, 0, 0, 0.2);
     padding: -5px;
-    margin-right: 0px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000; /* Osigurava da je kontrola paginacije iznad ostalih elemenata */
-}
-
-.pagination-controls button {
+  }
+  
+  .pagination-controls button {
     background-color: #180660;
     color: #ffffff;
     padding: 10px 20px;
@@ -99,51 +134,14 @@
     transition: background-color 0.3s ease;
     font-size: 1em;
     margin: 0 5px;
-}
-
-.pagination-controls button:disabled {
+  }
+  
+  .pagination-controls button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
-}
-
-.pagination-controls span {
+  }
+  
+  .pagination-controls span {
     font-size: 1em;
-}
-.search-bar {
-    margin-left: 20px; /* Prilagodite margine prema potrebi */
-    margin-top: 20px; /* Prilagodite margine prema potrebi */
-}
-
-.search-bar input[type="text"] {
-    padding: 10px;
-    width: 100px; /* Prilagodite širinu polja prema potrebi */
-    height: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-
-}
-
-.search-bar input[type="text"]::placeholder {
-    color: #999; /* Boja placeholder teksta */
-}
-
-.search-bar input[type="text"]:focus {
-    outline: none;
-    border-color: #0969df; /* Boja ivice polja prilikom fokusa */
-}
-
-.search-bar button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #180660; /* Boja pozadine dugmeta */
-    color: #fff; /* Boja teksta na dugmetu */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.search-bar button:hover {
-    background-color: #0969df; /* Promena boje na hover */
-}
+  }
+  
