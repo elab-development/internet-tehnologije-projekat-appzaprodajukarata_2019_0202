@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // Importuj Router
+import { Router } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { Event } from '../models/event';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-events',
@@ -15,11 +16,13 @@ export class EventsComponent implements OnInit {
   currentPage = 1;
   pageSize = 8;
   totalPages = 0;
+  isLoggedIn = false;
 
-  constructor(private eventService: EventService, private router: Router) { } // Dodaj Router u konstruktor
+  constructor(private eventService: EventService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.fetchEvents();
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   fetchEvents(): void {
@@ -51,6 +54,6 @@ export class EventsComponent implements OnInit {
   }
 
   navigateToTicketComponent(): void {
-    this.router.navigate(['/tickets']); // Implementacija navigacije do komponente za kupovinu karata
+    this.router.navigate(['/tickets']);
   }
 }

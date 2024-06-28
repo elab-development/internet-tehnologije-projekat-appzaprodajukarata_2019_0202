@@ -7,11 +7,11 @@
           <span class="icon"><i class="fas fa-calendar-alt"></i></span>
           {{ event.date }}
       </div>
-      <button class="overlay-button" (click)="navigateToTicketComponent()">Kupi ulaznicu</button>  </div>
+      <button class="overlay-button" *ngIf="isLoggedIn" (click)="navigateToTicketComponent()">Kupi ulaznicu</button>
+  </div>
 </div>
 <div class="pagination-controls">
   <button (click)="prevPage()" [disabled]="currentPage === 1"><</button>
   
   <button (click)="nextPage()" [disabled]="currentPage === totalPages">></button>
 </div>
-
