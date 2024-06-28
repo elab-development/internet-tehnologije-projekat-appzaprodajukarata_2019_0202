@@ -22,7 +22,7 @@
       <div class="stadium">{{ event.stadium }}</div>
       <div class="date">
         <span class="icon"><i class="fas fa-calendar-alt"></i></span>
-        {{ event.date }}
+        {{ event.date | formatDate }}
       </div>
       <button class="overlay-button" *ngIf="isLoggedIn" (click)="navigateToTicketComponent()">Kupi ulaznicu</button>
     </div>

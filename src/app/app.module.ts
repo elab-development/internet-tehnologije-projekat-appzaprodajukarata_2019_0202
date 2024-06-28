@@ -25,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from './services/auth.service';
+import { FormatDatePipe } from './format-date.pipe';
 
 
 
@@ -40,6 +41,7 @@ import { AuthService } from './services/auth.service';
     InputBorderHighlightDirective,
     CardHighlightDirective,
     FooterComponent,
+    FormatDatePipe,
 
   ],
   imports: [
