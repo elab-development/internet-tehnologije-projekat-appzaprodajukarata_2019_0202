@@ -1,17 +1,35 @@
-<div class="homepage">
-  <div class="card" *ngFor="let event of paginatedEvents" appCardHighlight>
+<div class="custom-container">
+  <!-- Search bar -->
+  <div class="search-bar">
+    <input type="text" placeholder="Pretraga" [(ngModel)]="searchText" (input)="applySearch()">
+  </div>
+
+  <!-- Event cards -->
+  <div class="homepage">
+    <div class="card" *ngFor="let event of paginatedEvents" appCardHighlight>
       <img src="../../assets/euro.jpg" alt="Event Image">
       <h1>{{ event.name }}</h1>
       <div class="stadium">{{ event.stadium }}</div>
       <div class="date">
-          <span class="icon"><i class="fas fa-calendar-alt"></i></span>
-          {{ event.date }}
+        <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+        {{ event.date }}
       </div>
       <button class="overlay-button" *ngIf="isLoggedIn" (click)="navigateToTicketComponent()">Kupi ulaznicu</button>
+    </div>
   </div>
-</div>
-<div class="pagination-controls">
-  <button (click)="prevPage()" [disabled]="currentPage === 1"><</button>
-  
-  <button (click)="nextPage()" [disabled]="currentPage === totalPages">></button>
+
+  <!-- Pagination controls -->
+  <div class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1"><</button>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">></button>
+  </div>
+
+  <!-- Sorting controls -->
+  <div class="sort-controls">
+    <label>Sortiraj po:</label>
+    <select [(ngModel)]="sortOption" (change)="applySort()">
+      <option value="name">Nazivu događaja</option>
+      <option value="date">Datumu događaja</option>
+    </select>
+  </div>
 </div>
