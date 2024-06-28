@@ -11,6 +11,9 @@ export class AuthService {
   private signupUrl = 'http://127.0.0.1:8000/api/register';
   private loginUrl = 'http://127.0.0.1:8000/api/login';
   private logoutUrl = 'http://127.0.0.1:8000/api/logout';
+  private forgotPasswordUrl = 'http://127.0.0.1:8000/api/forgot-password';
+  private resetPasswordUrl = 'http://127.0.0.1:8000/api/reset-password';
+   private baseUrl = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -81,4 +84,19 @@ export class AuthService {
     localStorage.removeItem('userId');
   }
   
+  // auth.service.ts
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post<any>(this.forgotPasswordUrl, { email });
+  }
+
+  resetPassword(email: string, newPassword: string): Observable<any> {
+    const url = `${this.resetPasswordUrl}`;
+    return this.http.post<any>(url, { email, newPassword }).pipe(
+      tap(() => {
+        // Opcionalno: Dodati logiku nakon uspešnog resetovanja lozinke
+      }),
+      catchError(this.handleError) // Dodati obradu grešaka
+    );
+  }
+
 }

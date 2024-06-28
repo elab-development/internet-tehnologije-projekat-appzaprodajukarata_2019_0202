@@ -6,7 +6,7 @@
       </div>
 
       <!-- Forma za Login -->
-      <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isSignUp && !isLoading">
+      <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isSignUp && !isLoading && !resetPasswordMode">
         <div class="custom-form-group">
           <label for="email">E-mail</label>
           <input type="email" id="email" class="custom-form-control" ngModel name="email" required email>
@@ -19,32 +19,35 @@
           <button class="custom-btn custom-btn-primary" type="submit" [disabled]="!authForm.valid" id="loginButton">
             Login
           </button>
+          <button class="custom-btn custom-btn-secondary" (click)="showResetPasswordForm()" id="forgotPasswordButton" type="button">
+            Forgot password?
+          </button>
           <button class="custom-btn custom-btn-secondary" (click)="switchButtonClicked()" id="switchButton" type="button">
             Switch to Sign up
           </button>
         </div>
       </form>
 
-      <!-- Forma za Sign up -->
-      <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" *ngIf="isSignUp && !isLoading">
+      <!-- Forma za Resetovanje Lozinke -->
+      <form *ngIf="resetPasswordMode && !isLoading" #resetForm="ngForm" (ngSubmit)="onSubmit(resetForm)">
         <div class="custom-form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" class="custom-form-control" ngModel name="name" required>
+          <label for="emailReset">E-mail</label>
+          <input type="email" id="emailReset" class="custom-form-control" ngModel name="email" required email>
         </div>
         <div class="custom-form-group">
-          <label for="email">E-mail</label>
-          <input type="email" id="email" class="custom-form-control" ngModel name="email" required email>
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" class="custom-form-control" [(ngModel)]="newPassword" name="newPassword" required minlength="6">
         </div>
         <div class="custom-form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" class="custom-form-control" ngModel name="password" required minlength="6">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" class="custom-form-control" [(ngModel)]="confirmPassword" name="confirmPassword" required minlength="6">
         </div>
         <div class="custom-buttons">
-          <button class="custom-btn custom-btn-primary" type="submit" [disabled]="!signupForm.valid" id="signupButton">
-            Sign up
+          <button class="custom-btn custom-btn-primary" type="submit" [disabled]="!resetForm.valid">
+            Reset Password
           </button>
-          <button class="custom-btn custom-btn-secondary" (click)="switchButtonClicked()" id="switchButton" type="button">
-            Switch to Login
+          <button class="custom-btn custom-btn-secondary" (click)="backToLogin()" id="backToLoginButton" type="button">
+            Back to Login
           </button>
         </div>
       </form>

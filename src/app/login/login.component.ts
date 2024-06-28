@@ -12,6 +12,9 @@ export class LoginComponent {
   isSignUp = false;
   isLoading = false;
   error: string | null = null;
+  resetPasswordMode = false;
+  newPassword: string = '';
+  confirmPassword: string = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -36,6 +39,20 @@ export class LoginComponent {
           this.isLoading = false;
         }
       });
+    } else if (this.resetPasswordMode) {
+      this.authService.resetPassword(email, this.newPassword).subscribe({
+        next: () => {
+          this.isLoading = false;
+          this.error = null;
+          this.resetPasswordMode = false;
+          this.newPassword = '';
+          this.confirmPassword = '';
+        },
+        error: (errMessage) => {
+          this.error = errMessage;
+          this.isLoading = false;
+        }
+      });
     } else {
       this.authService.logIn(email, password).subscribe({
         next: () => {
@@ -54,5 +71,17 @@ export class LoginComponent {
 
   switchButtonClicked() {
     this.isSignUp = !this.isSignUp;
+    this.resetPasswordMode = false;
+    this.error = null;
+  }
+
+  showResetPasswordForm() {
+    this.resetPasswordMode = true;
+    this.error = null;
+  }
+
+  backToLogin() {
+    this.resetPasswordMode = false;
+    this.error = null;
   }
 }
