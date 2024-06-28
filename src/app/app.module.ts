@@ -26,6 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from './services/auth.service';
 import { FormatDatePipe } from './format-date.pipe';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 
 
@@ -42,6 +43,7 @@ import { FormatDatePipe } from './format-date.pipe';
     CardHighlightDirective,
     FooterComponent,
     FormatDatePipe,
+    CreateEventComponent
 
   ],
   imports: [

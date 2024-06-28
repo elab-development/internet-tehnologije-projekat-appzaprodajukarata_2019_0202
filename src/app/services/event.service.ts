@@ -9,7 +9,7 @@ import { Event } from '../models/event';
 })
 export class EventService {
 
-  private apiUrl = 'http://127.0.0.1:8000/api/events'; // zameni sa stvarnim URL-om tvog API-ja
+  private apiUrl = 'http://127.0.0.1:8000/api/events'; // Replace with the actual URL of your API
 
   constructor(private http: HttpClient) { }
 
@@ -17,5 +17,9 @@ export class EventService {
     return this.http.get<{ data: Event[] }>(this.apiUrl).pipe(
       map(response => response.data)
     );
+  }
+
+  createEvent(event: Event): Observable<Event> {
+    return this.http.post<Event>(this.apiUrl, event);
   }
 }

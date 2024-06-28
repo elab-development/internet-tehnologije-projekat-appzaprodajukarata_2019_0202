@@ -1,9 +1,12 @@
 <header class="navbar">
   <div class="left-section">
     <a routerLink="/home">
-      <img src="assets/logio.png" alt="Home" class="nav-icon" />
+      <img src="assets/logo.png" alt="Home" class="nav-icon" />
     </a>
     <a routerLink="/events">Events</a>
+    <ng-container *ngIf="isAdmin">
+      <a routerLink="/create-event" class="create-event-button">Create Event</a>
+    </ng-container>
   </div>
   <div class="right-section">
     <ng-container *ngIf="isLoggedIn(); else loginSection">
@@ -14,4 +17,3 @@
     </ng-template>
   </div>
 </header>
-

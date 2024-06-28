@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Kreiraj Događaj</h2>
+  <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)">
+    <div class="form-group">
+      <label for="name">Ime Događaja</label>
+      <input type="text" id="name" class="form-control" ngModel name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="stadium">Stadion</label>
+      <input type="text" id="stadium" class="form-control" ngModel name="stadium" required>
+    </div>
+    <div class="form-group">
+      <label for="date">Datum</label>
+      <input type="date" id="date" class="form-control" ngModel name="date" required>
+    </div>
+    <div class="form-group">
+      <label for="time">Vreme</label>
+      <input type="time" id="time" class="form-control" ngModel name="time" required>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!eventForm.valid">Create</button>
+  </form>
+</div>

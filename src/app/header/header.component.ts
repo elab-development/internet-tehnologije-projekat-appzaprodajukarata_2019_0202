@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  isAdmin: boolean = false;
+  
+  constructor(private authService: AuthService, private router: Router) {
+    this.isAdmin = this.authService.isAdmin();
+  }
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
