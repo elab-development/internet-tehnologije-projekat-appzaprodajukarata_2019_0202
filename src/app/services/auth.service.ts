@@ -115,5 +115,10 @@ export class AuthService {
     );
   }
   
+  getUserId(): Observable<number> {
+    // Ovde implementirajte logiku za dobijanje ID-ja trenutno prijavljenog korisnika
+    // Na primer, možete napraviti HTTP zahtev prema vašem backendu
+    return this.http.get<number>(`${this.baseUrl}/user-id`);
+  }
 
 }
