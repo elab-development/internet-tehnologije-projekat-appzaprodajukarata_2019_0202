@@ -20,12 +20,12 @@ export class LoginComponent {
     if (!form.valid) {
       return;
     }
-
+  
     const email = form.value.email;
     const password = form.value.password;
-
+  
     this.isLoading = true;
-
+  
     if (this.isSignUp) {
       const name = form.value.name;
       this.authService.signUp(name, email, password).subscribe({
@@ -41,17 +41,18 @@ export class LoginComponent {
     } else if (this.resetPasswordMode) {
       const newPassword = form.value.newPassword;
       const confirmPassword = form.value.confirmPassword;
-
+  
       if (newPassword !== confirmPassword) {
         this.error = 'Passwords do not match!';
         this.isLoading = false;
         return;
       }
-
-      this.authService.resetPassword(email, newPassword).subscribe({
+  
+      this.authService.resetPassword(email, newPassword, confirmPassword).subscribe({
         next: () => {
           this.isLoading = false;
           this.resetPasswordMode = false;
+          this.router.navigate(['/login']);
         },
         error: (errMessage) => {
           this.error = errMessage;
@@ -70,9 +71,10 @@ export class LoginComponent {
         }
       });
     }
-
+  
     form.reset();
   }
+  
 
   switchToLogin() {
     this.isSignUp = false;

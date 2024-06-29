@@ -40,10 +40,24 @@ export class AuthService {
   }
 
   logOut(): Observable<any> {
-    return this.http.post<any>(this.logoutUrl, {}).pipe(
+    const token = localStorage.getItem('token');
+    return this.http.post<any>(this.logoutUrl, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).pipe(
       tap(() => {
         this.clearAuthentication();
         this.router.navigate(['/login']);
+      }),
+      catchError((error) => {
+        if (error.status === 401) {
+          // Ako dobijete 401 grešku, jasno je da korisnik nije autentifikovan.
+          console.error('Logout failed: Unauthorized');
+          this.clearAuthentication();
+          this.router.navigate(['/login']);
+        }
+        return throwError(error);
       })
     );
   }
@@ -91,17 +105,20 @@ export class AuthService {
   
   // auth.service.ts
   forgotPassword(email: string): Observable<any> {
-    return this.http.post<any>(this.forgotPasswordUrl, { email });
-  }
-
-  resetPassword(email: string, newPassword: string): Observable<any> {
-    const url = `${this.resetPasswordUrl}`;
-    return this.http.post<any>(url, { email, newPassword }).pipe(
-      tap(() => {
-        // Opcionalno: Dodati logiku nakon uspešnog resetovanja lozinke
-      }),
-      catchError(this.handleError) // Dodati obradu grešaka
+    return this.http.post<any>(this.forgotPasswordUrl, { email }).pipe(
+      catchError(this.handleError)
     );
   }
+
+  resetPassword(email: string, password: string, passwordConfirmation: string): Observable<any> {
+    return this.http.post<any>(this.resetPasswordUrl, { 
+      email, 
+      password, 
+      password_confirmation: passwordConfirmation 
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
 
 }

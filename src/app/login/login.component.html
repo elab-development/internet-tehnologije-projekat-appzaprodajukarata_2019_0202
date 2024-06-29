@@ -60,11 +60,11 @@
         </div>
         <div class="custom-form-group">
           <label for="newPassword">New Password</label>
-          <input type="password" id="newPassword" class="custom-form-control" ngModel name="newPassword" required minlength="6">
+          <input type="password" id="newPassword" class="custom-form-control" ngModel name="newPassword" required minlength="8">
         </div>
         <div class="custom-form-group">
           <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" class="custom-form-control" ngModel name="confirmPassword" required minlength="6">
+          <input type="password" id="confirmPassword" class="custom-form-control" ngModel name="confirmPassword" required minlength="8">
         </div>
         <div class="custom-buttons">
           <button type="submit" class="custom-btn custom-btn-primary" [disabled]="!resetForm.valid">Submit</button>
