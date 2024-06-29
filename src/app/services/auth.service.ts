@@ -68,7 +68,7 @@ export class AuthService {
 
   isAdmin(): boolean {
     const userEmail = localStorage.getItem('userEmail');
-    return userEmail === 'admin@gmail.com'; // Prilagodite ovde ako postoji drugačija logika za proveru admina
+    return userEmail === 'admin@gmail.com'; 
   }
 
   private handleAuthentication(email: string, userId: string, token: string) {
