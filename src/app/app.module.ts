@@ -27,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from './services/auth.service';
 import { FormatDatePipe } from './format-date.pipe';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { CommonModule, DatePipe } from '@angular/common';
 
 
 
@@ -58,12 +59,14 @@ import { CreateEventComponent } from './create-event/create-event.component';
     ReactiveFormsModule,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptor,
     multi : true,
+    
   },
   ],
   bootstrap: [AppComponent]
