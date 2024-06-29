@@ -71,4 +71,25 @@ class AuthController extends Controller
         ];
 
     }
+
+
+    public function resetPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255|exists:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $user = User::where('email', $request->email)->first();
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return response()->json(['message' => 'Lozinka je uspešno resetovana!'], 200);
+    }
+
+
 }

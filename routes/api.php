@@ -47,5 +47,8 @@ Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
    
 });
 
+Route::post('forgot-password', [AuthController::class, 'forgotPassword']);
+Route::post('reset-password', [AuthController::class, 'resetPassword']);
+
 Route::get('/user/{id}/tickets', [TicketController::class, 'userTickets']);
 
