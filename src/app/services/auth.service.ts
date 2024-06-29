@@ -103,12 +103,7 @@ export class AuthService {
     localStorage.removeItem('userId');
   }
   
-  // auth.service.ts
-  forgotPassword(email: string): Observable<any> {
-    return this.http.post<any>(this.forgotPasswordUrl, { email }).pipe(
-      catchError(this.handleError)
-    );
-  }
+
 
   resetPassword(email: string, password: string, passwordConfirmation: string): Observable<any> {
     return this.http.post<any>(this.resetPasswordUrl, { 
